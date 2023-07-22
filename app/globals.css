@@ -14,3 +14,7 @@ h3 {
 p.banner {
   letter-spacing: 0.3em;
 }
+
+.screen {
+  min-height: calc(100vh - 168px);
+}
