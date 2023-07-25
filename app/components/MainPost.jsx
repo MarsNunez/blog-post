@@ -1,10 +1,11 @@
 import Link from "next/link";
 import Banner from "./Banner";
 import moment from "moment";
+import { readingTime } from "reading-time-estimator";
 
 const MainPost = ({ post }) => {
   const { badges, content, createdAt, id, image, title } = post.node;
-
+  const estimatedTime = readingTime(content, 40);
   return (
     <Link href={`/post/${id}`}>
       <div
@@ -21,7 +22,7 @@ const MainPost = ({ post }) => {
          md:bg-gradient-to-t md:from-transparent md:text-black h-fit my-auto md:pt-0 md:pb-0"
         >
           <p className="text-xs md:text-sm">
-            {moment(createdAt).format("MMMM D YYYY")} • 4 min read
+            {moment(createdAt).format("MMMM D YYYY")} • {estimatedTime.text}
           </p>
           <h3 className="font-medium line-clamp-1 md:line-clamp-2 md:text-3xl md:font-bold md:my-2">
             {title}

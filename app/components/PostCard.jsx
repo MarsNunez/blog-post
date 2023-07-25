@@ -1,9 +1,11 @@
 import Link from "next/link";
 import Banner from "./Banner";
 import moment from "moment/moment";
+import { readingTime } from "reading-time-estimator";
 
 const PostCard = ({ post }) => {
   const { badges, content, createdAt, id, image, title } = post.node;
+  const estimatedTime = readingTime(content, 40);
 
   return (
     <Link href={`/post/${id}`}>
@@ -15,7 +17,7 @@ const PostCard = ({ post }) => {
         />
         <div>
           <p className="text-xs md:text-sm">
-            {moment(createdAt).format("MMMM D YYYY")} • 8 min read
+            {moment(createdAt).format("MMMM D YYYY")} • {estimatedTime.text}
           </p>
           <h3 className="leading-5 mb-2 mt-1 line-clamp-2 md:line-clamp-3 md:text-xl md:leading-6">
             {title}
