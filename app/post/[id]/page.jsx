@@ -6,6 +6,9 @@ import Link from "next/link";
 import { use } from "react";
 import { readingTime } from "reading-time-estimator";
 
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
+
 const Post = ({ params }) => {
   const currentPost = use(getPosts()).filter(
     (post) => post.node.id == params.id
@@ -30,7 +33,9 @@ const Post = ({ params }) => {
               <Banner name={badge.name} key={badge.name} />
             ))}
           </div>
-          <p className="text-justify md:leading-9 md:text-lg">{content}</p>
+          <div className="text-justify md:leading-9 md:text-lg content">
+            <ReactMarkdown children={content} rehypePlugins={[rehypeRaw]} />
+          </div>
           {videoUrl && (
             <iframe
               className="w-full mt-5 h-full min-h-[200px] md:min-h-[443px] lg:min-h-[510px]"
