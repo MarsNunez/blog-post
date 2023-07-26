@@ -5,7 +5,7 @@ import { readingTime } from "reading-time-estimator";
 
 const PostCard = ({ post }) => {
   const { badges, content, createdAt, id, image, title } = post.node;
-  const estimatedTime = readingTime(content, 40);
+  const estimatedTime = readingTime(content, 60);
 
   return (
     <Link href={`/post/${id}`}>

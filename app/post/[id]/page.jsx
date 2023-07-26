@@ -16,7 +16,7 @@ const Post = ({ params }) => {
 
   const { badges, content, createdAt, videoUrl, image, title } =
     currentPost.node;
-  const estimatedTime = readingTime(content, 40);
+  const estimatedTime = readingTime(content, 60);
 
   return (
     <div>
